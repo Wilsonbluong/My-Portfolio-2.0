@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 //import axios from "axios";
 import {
   ContactContainer,
@@ -14,11 +14,11 @@ import {
 } from "./styles/Contact.js";
 
 const Contact = () => {
-  const [state, setState] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  // const [state, setState] = useState({
+  //   name: "",
+  //   email: "",
+  //   message: "",
+  // });
 
   // const [result, setResult] = useState(null);
 
@@ -38,14 +38,14 @@ const Contact = () => {
   //     });
   // };
 
-  const onInputChange = (e) => {
-    const { name, value } = e.target;
+  // const onInputChange = (e) => {
+  //   const { name, value } = e.target;
 
-    setState({
-      ...state,
-      [name]: value,
-    });
-  };
+  //   setState({
+  //     ...state,
+  //     [name]: value,
+  //   });
+  // };
 
   return (
     <>
@@ -57,30 +57,30 @@ const Contact = () => {
           {/* {result && <StyledResult>{result.message}</StyledResult>} */}
           <StyledForm
             name="contact v1"
-            method="post"
+            method="POST"
             data-netlify="true"
-            onSubmit="submit"
+            // onSubmit="submit"
           >
             <input type="hidden" name="form-name" value="contact v1" />
             <StyledInput
               type="text"
               name="name"
               placeholder="Name"
-              value={state.name}
-              onChange={onInputChange}
+              // value={state.name}
+              // onChange={onInputChange}
             />
             <StyledInput
               type="email"
               name="email"
               placeholder="Email"
-              value={state.email}
-              onChange={onInputChange}
+              // value={state.email}
+              // onChange={onInputChange}
             />
             <StyledTextArea
               name="message"
-              value={state.message}
               placeholder="Your Message"
-              onChange={onInputChange}
+              // value={state.message}
+              // onChange={onInputChange}
             />
             <StyledButton type="submit">Submit</StyledButton>
           </StyledForm>
