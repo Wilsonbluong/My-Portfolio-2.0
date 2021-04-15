@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+//import axios from "axios";
 import {
   ContactContainer,
   StyledForm,
@@ -10,7 +10,7 @@ import {
   Border,
   StyledTextArea,
   StyledButton,
-  StyledResult,
+  //StyledResult,
 } from "./styles/Contact.js";
 
 const Contact = () => {
@@ -20,26 +20,26 @@ const Contact = () => {
     message: "",
   });
 
-  const [result, setResult] = useState(null);
+  // const [result, setResult] = useState(null);
 
-  const sendEmail = (event) => {
-    event.preventDefault();
-    axios
-      .post("/send", { ...state })
-      .then((res) => {
-        setResult(res.data);
-        setState({ name: "", email: "", message: "" });
-      })
-      .catch(() => {
-        setResult({
-          success: false,
-          message: "Something went wrong. Try again later",
-        });
-      });
-  };
+  // const sendEmail = (e) => {
+  //   e.preventDefault();
+  //   axios
+  //     .post("/send", { ...state })
+  //     .then((res) => {
+  //       setResult(res.data);
+  //       setState({ name: "", email: "", message: "" });
+  //     })
+  //     .catch(() => {
+  //       setResult({
+  //         success: false,
+  //         message: "Something went wrong. Try again later",
+  //       });
+  //     });
+  // };
 
-  const onInputChange = (event) => {
-    const { name, value } = event.target;
+  const onInputChange = (e) => {
+    const { name, value } = e.target;
 
     setState({
       ...state,
@@ -54,8 +54,14 @@ const Contact = () => {
           <ContactTitle>Get in Touch</ContactTitle>
           <Border />
           <ContactText>Have a question or want to work together?</ContactText>
-          {result && <StyledResult>{result.message}</StyledResult>}
-          <StyledForm onSubmit={sendEmail}>
+          {/* {result && <StyledResult>{result.message}</StyledResult>} */}
+          <StyledForm
+            name="contact v1"
+            method="post"
+            data-netlify="true"
+            onSubmit="submit"
+          >
+            <input type="hidden" name="form-name" value="contact v1" />
             <StyledInput
               type="text"
               name="name"
