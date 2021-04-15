@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 //import axios from "axios";
 import {
   ContactContainer,
@@ -14,6 +14,14 @@ import {
 } from "./styles/Contact.js";
 
 const Contact = () => {
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    if (window.location.search.includes("success=true")) {
+      setSuccess(true);
+    }
+  }, []);
+
   return (
     <>
       <ContactContainer id="contact">
@@ -21,11 +29,14 @@ const Contact = () => {
           <ContactTitle>Get in Touch</ContactTitle>
           <Border />
           <ContactText>Have a question or want to work together?</ContactText>
+          {success && (
+            <p style={{ color: "green" }}>Thanks for your message! </p>
+          )}
           <StyledForm
             name="contact-wilson"
             method="POST"
+            action="/contact/?success=true"
             data-netlify="true"
-            //onSubmit="submit"
           >
             <input type="hidden" name="form-name" value="contact-wilson" />
             <StyledInput
