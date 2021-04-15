@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 //import axios from "axios";
 import {
   ContactContainer,
@@ -13,39 +13,47 @@ import {
   //StyledResult,
 } from "./styles/Contact.js";
 
+const onSubmit = async (event, setSubmitText) => {
+  event.preventDefault();
+  setSubmitText("Submitting ...");
+  const formElements = [...event.currentTarget.elements];
+  const isValid =
+    formElements.filter((elem) => elem.name === "bot-field")[0].value === "";
+
+  const validFormElements = isValid ? formElements : [];
+
+  if (validFormElements.length < 1) {
+    // or some other cheeky error message
+    setSubmitText("It looks like you filled out too many fields!");
+  } else {
+    const filledOutElements = validFormElements
+      .filter((elem) => !!elem.value)
+      .map(
+        (element) =>
+          encodeURIComponent(element.name) +
+          "=" +
+          encodeURIComponent(element.value)
+      )
+      .join("&");
+
+    await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: filledOutElements,
+    })
+      .then(() => {
+        setSubmitText("Successfully submitted!");
+      })
+      .catch((_) => {
+        setSubmitText(
+          "There was an error with your submission, please email me using the address above."
+        );
+      });
+  }
+};
+
 const Contact = () => {
-  // const [state, setState] = useState({
-  //   name: "",
-  //   email: "",
-  //   message: "",
-  // });
-
-  // const [result, setResult] = useState(null);
-
-  // const sendEmail = (e) => {
-  //   e.preventDefault();
-  //   axios
-  //     .post("/send", { ...state })
-  //     .then((res) => {
-  //       setResult(res.data);
-  //       setState({ name: "", email: "", message: "" });
-  //     })
-  //     .catch(() => {
-  //       setResult({
-  //         success: false,
-  //         message: "Something went wrong. Try again later",
-  //       });
-  //     });
-  // };
-
-  // const onInputChange = (e) => {
-  //   const { name, value } = e.target;
-
-  //   setState({
-  //     ...state,
-  //     [name]: value,
-  //   });
-  // };
+  const [submitText, setSubmitText] = useState(null);
 
   return (
     <>
@@ -54,36 +62,39 @@ const Contact = () => {
           <ContactTitle>Get in Touch</ContactTitle>
           <Border />
           <ContactText>Have a question or want to work together?</ContactText>
-          {/* {result && <StyledResult>{result.message}</StyledResult>} */}
           <StyledForm
-            name="contact v1"
+            id="#contact-wilson"
+            name="contact-wilson"
             method="POST"
             data-netlify="true"
-            // onSubmit="submit"
+            onSubmit={(e) => onSubmit(e, setSubmitText)}
           >
             <input type="hidden" name="form-name" value="contact v1" />
             <StyledInput
               type="text"
+              id="name"
               name="name"
               placeholder="Name"
-              // value={state.name}
-              // onChange={onInputChange}
+              required={true}
             />
             <StyledInput
               type="email"
+              id="email"
               name="email"
               placeholder="Email"
-              // value={state.email}
-              // onChange={onInputChange}
+              required={true}
             />
             <StyledTextArea
+              id="message"
               name="message"
               placeholder="Your Message"
-              // value={state.message}
-              // onChange={onInputChange}
+              required={true}
             />
-            <StyledButton type="submit">Submit</StyledButton>
+            <StyledButton type="submit" name="SendMessage">
+              Submit
+            </StyledButton>
           </StyledForm>
+          {submitText && <p>{submitText}</p>}
         </FormWrapper>
       </ContactContainer>
     </>
