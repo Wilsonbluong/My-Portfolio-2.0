@@ -30,7 +30,9 @@ const Contact = () => {
           <Border />
           <ContactText>Have a question or want to work together?</ContactText>
           {success && (
-            <p style={{ color: "green" }}>Thanks for your message! </p>
+            <p style={{ color: "green", padding: "1em" }}>
+              Thanks for your message!{" "}
+            </p>
           )}
           <StyledForm
             name="contact-wilson"
