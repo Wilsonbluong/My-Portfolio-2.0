@@ -103,9 +103,9 @@ export const NavMenu = styled.ul`
     flex-direction: column;
     width: 100%;
     position: absolute;
-    left: 0;
+    //left: 0;
     top: 60px;
-    opacity: ${({ click }) => (click ? "1" : "0")};
+    left: ${({ click }) => (click ? "0" : "-100vw")};
     transition: all 0.15s ease-in-out;
     background: #101522;
   }
