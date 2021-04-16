@@ -4,10 +4,11 @@ export const Progress = styled.div`
   background-color: #d8d8d8;
   margin-bottom: 3px;
   height: 20px;
-  width: 370px;
+  width: 320px;
 
   @media (min-width: 900px) {
-    margin-bottom: 6px;
+    margin-bottom: 7px;
+    width: 370px;
   }
 `;
 

@@ -10,7 +10,7 @@ const Skills = () => {
         <ProgressBar done="95" />
         <SkillTitle>CSS</SkillTitle>
         <ProgressBar done="90" />
-        <SkillTitle>Javascript</SkillTitle>
+        <SkillTitle>Javascript (ES6+)</SkillTitle>
         <ProgressBar done="85" />
         <SkillTitle>React</SkillTitle>
         <ProgressBar done="80" />

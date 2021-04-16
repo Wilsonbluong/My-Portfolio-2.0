@@ -25,8 +25,8 @@ export const ContactTitle = styled.div`
 `;
 
 export const ContactText = styled.p`
-  font-size: 1.15rem;
-  margin: 2rem 0;
+  font-size: 1rem;
+  margin: 2em 1em;
 `;
 
 export const FormWrapper = styled.div`
@@ -41,7 +41,7 @@ export const StyledResult = styled.p`
 `;
 
 export const StyledForm = styled.form`
-  width: 400px;
+  width: 325px;
 
   @media (min-width: 600px) {
     width: 500px;

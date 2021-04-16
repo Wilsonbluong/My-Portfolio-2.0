@@ -42,16 +42,20 @@ export const AboutLeftside = styled.div`
 `;
 
 export const ProfileImage = styled(motion.img)`
+  display: block;
   border: 0;
-  width: 350px;
-  max-width: 400px;
-  height: auto;
-  margin: 3rem 0 2rem 0;
+  width: 300px;
+  margin: 3rem auto 2rem auto;
   box-shadow: 5px 5px 0px #264653, 10px 10px 0 #2a9d8f;
+  height: auto;
+
+  @media (min-width: 650px) {
+    max-width: 400px;
+  }
 `;
 
 export const AboutText = styled(motion.p)`
-  width: 360px;
+  width: 320px;
   max-width: 400px;
   font-size: 0.9rem;
   text-align: center;
