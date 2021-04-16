@@ -40,7 +40,7 @@ const Navbar = () => {
               duration={500}
               spy={true}
               exact="true"
-              offset={-160}
+              offset={-150}
             >
               About
             </NavLink>

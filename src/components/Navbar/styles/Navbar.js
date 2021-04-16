@@ -41,7 +41,7 @@ export const NavLink = styled(ScrollLink)`
   }
 
   @media (max-width: 800px) {
-    font-size: 3rem;
+    font-size: 1rem;
     text-align: center;
     margin: 0.85em 0;
     width: 100%;
@@ -72,7 +72,7 @@ export const ResumeLink = styled.a`
   }
 
   @media (max-width: 800px) {
-    font-size: 3rem;
+    font-size: 1rem;
     text-align: center;
     margin: 0.85em 0;
     width: 100%;
@@ -98,16 +98,15 @@ export const NavMenu = styled.ul`
   list-style: none;
   text-align: center;
 
-  @media (max-width: 800px) {
+  @media (max-width: 500px) {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100vh;
     position: absolute;
-    top: 8vh;
-    left: ${({ click }) => (click ? 0 : "-100%")};
-    opacity: 1;
-    transition: all 0.5s ease;
+    left: 0;
+    top: 60px;
+    opacity: ${({ click }) => (click ? "1" : "0")};
+    transition: all 0.15s ease-in-out;
     background: #101522;
   }
 `;
@@ -123,7 +122,7 @@ export const MobileIcon = styled.div`
   display: none;
   color: white;
 
-  @media (max-width: 800px) {
+  @media (max-width: 500px) {
     display: block;
     position: absolute;
     top: 0;
